@@ -36,8 +36,8 @@ public class TakeBetfair {
         Thread.sleep(5000);
         betfair.fotbalAstazi.click();
         Thread.sleep(5000);
-        betfair.orderByCompetition.click();
-        Thread.sleep(5000);
+        //betfair.orderByCompetition.click();
+        //Thread.sleep(5000);
 
 
     }
@@ -45,6 +45,16 @@ public class TakeBetfair {
     @Test
     public void getTeamsPairs() throws  IOException {
         betfair.getTeamPairsInFile();
+    }
+
+    @Test
+    public void getElite() throws IOException, InterruptedException {
+        betfair.fotbal.click();
+        Thread.sleep(3000);
+        betfair.elita.click();
+        Thread.sleep(3000);
+        betfair.getTeamPairsInFile();
+
     }
 
     @AfterSuite

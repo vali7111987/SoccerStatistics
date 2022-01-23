@@ -9,12 +9,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 public class Betfair {
+    @FindBy(xpath ="//li[@class='ui-clickselect']//*[contains(text(),'Fotbal')]") WebElement fotbal;
+    @FindBy(xpath="//*[contains(text(),'Elita')]") WebElement elita;
     @FindBy(xpath="//*[contains(text(),'Fotbal de ast')]") WebElement fotbalAstazi;
     @FindBy(xpath="//*[@id='onetrust-accept-btn-handler']") WebElement acceptaCookie;
     @FindBy(xpath="//div[@class='chooser-container']//span[2]//a[@data-action='loadCompetition']") WebElement orderByCompetition;
@@ -51,5 +50,25 @@ public class Betfair {
         }
         out.close();
     }
+    public List<String> getTeamsHome() throws IOException {
+        List <String> teamHome = Collections.singletonList("");
+        List<WebElement> teams=driver.findElements(By.xpath(pathTeamsHome));
+        for (int i=0;i<teams.size();i++) {
+            teamHome.add(eliminBadChars(String.valueOf(teams.get(i))));
+        }
+        return teamHome;
+    }
+
+    public List<String> getTeamsAway() throws IOException {
+        List <String> teamAway = Collections.singletonList("");
+        List<WebElement> teams=driver.findElements(By.xpath(pathTeamsAway));
+        for (int i=0;i<teams.size();i++) {
+            teamAway.add(eliminBadChars(String.valueOf(teams.get(i))));
+        }
+        return teamAway;
+    }
 }
+
+
+
 

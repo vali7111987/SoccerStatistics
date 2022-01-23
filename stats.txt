@@ -1,44 +1,64 @@
-Team Home, Team Away, BTTS, Over 15, Over 35
-Bologna,Napoli,39.0,79.0,45.0
-AC Milan,Spezia,47.5,81.0,38.0
-Fiorentina,Genoa,65.5,91.0,55.5
-Burnley,Watford,56.5,62.0,31.0
-Brighton,Chelsea,38.0,71.5,14.0
-Betis,Alaves,47.0,84.0,36.0
-Cadiz,Espanyol,50.0,65.0,25.0
-Portimonense,Guimaraes,44.5,61.5,11.0
-Konyaspor,Adana Demirspor,63.5,82.0,27.0
-Rizespor,Antalyaspor,37.5,72.0,28.5
-Kayserispor,Basaksehir,55.0,80.0,10.0
-Goztepe,Sivasspor,48.0,67.0,9.5
-Fenerbahce,Altay,67.0,86.5,37.5
-Trabzonspor,Giresunspor,40.0,65.0,20.0
-Preston,Sheffield Utd,46.0,66.5,17.0
-Fulham,Birmingham,55.5,91.0,32.5
-Tottenham U23,Blackburn U23,56.0,81.5,50.0
-Charlton U23,Watford U23,28.5,91.5,26.5
-Celtic,Hibernian,58.0,83.5,33.0
-Aberdeen,Rangers,55.0,73.5,31.5
-Ross County,Motherwell,67.0,83.5,28.0
-Livingston,Dundee,48.0,58.0,20.5
-Farense,Leixoes,53.5,66.5,27.5
-Academica,Rio Ave,69.0,87.5,12.0
-Covilha,Feirense,37.5,62.0,12.0
-Genclerbirligi,Adanaspor,27.5,67.0,22.0
-Maccabi Netanya,Bnei Sakhnin,47.0,71.0,11.0
-Laval,Annecy,61.5,72.5,5.5
-Lazio,Udinese,60.0,85.0,55.0
-Sassuolo,Cagliari,51.5,78.5,34.5
-Valletta,Floriana,50.0,57.0,28.5
-Southampton U23,Fulham U23,59.5,100.0,39.5
-Wolves U23,Burnley U23,57.0,85.5,29.0
-Cliftonville,Glentoran,38.0,76.5,9.5
-FC Koln,Hamburger SV,78.0,95.0,65.5
-Bochum,Mainz,44.5,72.5,16.5
-RKC Waalwijk,Den Haag,53.0,68.5,36.0
-Heerenveen,Go Ahead Eagles,46.5,73.5,26.0
-Panaitolikos,Olympiakos,43.5,50.0,12.5
-PAOK,AEK Athens,50.0,78.0,38.5
-Umm Salal,Al Gharafa,80.0,90.0,46.5
-Al Khor,Al Rayyan,70.0,85.5,23.5
-Chelmsford,St Albans,45.0,71.5,35.0
+Team Home, Team Away, BTTS, Over 15, Over 25, Over 35
+Team Home, Team Away, BTTS, Over 15, Over 25, Over 35
+Cagliari,Fiorentina,68.5,82.0,59.5,31.5
+Granada,Osasuna,60.0,75.0,45.0,25.0
+Arsenal,Burnley,45.5,59.0,36.5,32.5
+Leicester,Brighton,55.0,75.0,45.0,35.0
+Crystal Palace,Liverpool,54.5,86.5,73.0,50.0
+Napoli,Salernitana,53.5,80.5,56.5,29.5
+Torino,Sassuolo,77.5,91.0,86.5,53.0
+Spezia,Sampdoria,60.0,75.0,55.0,30.0
+Clermont,Rennes,45.0,80.0,40.0,25.0
+Nantes,Lorient,52.0,76.0,47.5,42.5
+Bordeaux,Strasbourg,66.0,85.5,47.5,37.5
+RB Leipzig,Wolfsburg,46.5,94.5,73.0,51.5
+Real Madrid,Elche,57.0,62.0,52.5,28.5
+Maritimo,Belenenses,30.5,72.0,24.5,18.0
+Montpellier,Monaco,42.5,67.0,38.0,33.0
+Chelsea,Tottenham,54.0,73.5,49.5,34.5
+Empoli,AS Roma,71.0,90.0,80.5,62.0
+Rayo Vallecano,Athletic Bilbao,38.0,53.0,29.5,19.5
+Gil Vicente,Portimonense,34.5,75.5,58.5,22.5
+Alaves,Barcelona,22.5,27.5,13.5,4.5
+FC Porto,Famalicao,58.5,94.0,76.5,52.5
+Nantes,Brest,43.5,68.5,40.0,28.5
+FC Porto,Maritimo,60.0,79.0,67.5,29.0
+Famalicao,Arouca,61.5,78.0,50.0,11.0
+Santa Clara,Boavista,39.5,68.5,51.5,20.0
+Benfica,Gil Vicente,47.0,77.5,66.0,42.0
+Hertha Berlin,Bochum,54.0,74.5,53.0,21.0
+Athletic Bilbao,Espanyol,57.5,67.0,52.5,28.0
+Getafe,Levante,40.0,55.5,44.5,14.5
+Chelsea,Plymouth,63.0,91.5,54.5,37.0
+Augsburg,Union Berlin,79.0,84.5,63.0,42.0
+Mainz,Hoffenheim,50.0,80.0,65.0,40.0
+FC Koln,Freiburg,60.0,80.0,65.0,45.0
+Wolves,Norwich,40.0,78.5,52.5,21.5
+Southampton,Coventry,82.0,82.0,63.5,63.5
+Everton,Brentford,43.0,76.5,46.5,21.0
+Huddersfield,Barnsley,54.0,72.0,56.5,40.5
+Crystal Palace,Hartlepool,47.5,80.0,51.0,37.0
+Mallorca,Cadiz,42.5,61.0,32.5,28.0
+Burnley,Watford,56.5,62.0,43.5,31.0
+Osasuna,Sevilla,45.5,59.0,22.5,18.0
+Monaco,Lyon,52.5,80.0,57.0,37.5
+Tottenham,Brighton,50.0,80.0,50.0,15.0
+Liverpool,Cardiff,50.0,85.0,75.0,45.0
+Valencia,Real Sociedad,61.5,95.5,52.5,34.0
+Reims,Bordeaux,55.0,80.0,65.0,40.0
+Troyes,Metz,54.5,73.0,45.5,22.5
+Strasbourg,Nantes,64.0,86.5,50.0,36.0
+Dortmund,Leverkusen,85.0,100.0,85.0,60.0
+Bologna,Empoli,50.0,77.5,45.0,31.5
+Atalanta,Cagliari,53.0,81.0,62.5,43.0
+Venezia,Napoli,55.5,89.5,65.0,38.5
+Fiorentina,Lazio,63.5,100.0,91.5,55.0
+Sampdoria,Sassuolo,91.5,96.0,91.5,60.0
+Udinese,Torino,50.0,60.0,35.0,20.0
+Inter,AC Milan,68.0,82.5,60.0,31.0
+Salernitana,Spezia,35.0,76.5,58.5,36.5
+Juventus,Verona,74.5,74.5,54.0,44.0
+AS Roma,Genoa,50.0,75.0,50.0,37.5
+Rennes,Brest,41.5,74.5,42.5,27.0
+Betis,Villarreal,42.5,70.5,42.5,37.5
+Bournemouth,Boreham Wood,55.0,85.0,59.0,26.5

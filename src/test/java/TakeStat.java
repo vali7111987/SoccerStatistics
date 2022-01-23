@@ -16,8 +16,8 @@ public class TakeStat {
     public TeamStat teamStat;
 
     public static Double[] calculateStat(Double[] home, Double[] away) {
-        Double[] calcStat=new Double[3];
-        for (int i=0;i<3;i++) {
+        Double[] calcStat=new Double[4];
+        for (int i=0;i<4;i++) {
             calcStat[i]=(home[i]+away[i])/2;
         }
         return calcStat;
@@ -42,10 +42,10 @@ public class TakeStat {
     @BeforeSuite
     public void setUp() throws InterruptedException, IOException {
         //File f =new File("stats.txt");
-        writeToFile("Team Home, Team Away, BTTS, Over 15, Over 35");
+        writeToFile("Team Home, Team Away, BTTS, Over 15, Over 25, Over 35");
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\vali7\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
+        //options.addArguments("--headless");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         teamStat=new TeamStat(driver);
@@ -66,7 +66,8 @@ public class TakeStat {
        teamStat.selectTeam(keyWord2);
        Double[] stat2=teamStat.getStatAway();
        Double[] statC=calculateStat(stat1,stat2);
-       String stats=statC[0].toString() + "," + statC[1].toString() + "," + statC[2].toString();
+       String stats=statC[0].toString() + "," + statC[1].toString() + "," + statC[2].toString()
+               + "," + statC[3].toString();
        writeToFile(keyWord1 + "," + keyWord2 + "," + stats);
 
 
