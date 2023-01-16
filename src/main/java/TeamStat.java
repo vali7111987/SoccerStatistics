@@ -129,16 +129,11 @@ public class TeamStat {
         searchTeam.sendKeys(teamsEx);
         searchTeam.sendKeys(Keys.DOWN);
         searchTeam.sendKeys(Keys.ENTER);
+        returnTeam="Not Found";
         if (teamName.getText().contains(teamsEx)) {
             returnTeam=teamsEx;
         } else {
-            for (int i=0;i<teamPatt.length;i++) {
-                if (teamName.getText().contains(teamPatt[i])) {
-                    returnTeam=teamPatt[i];
-                } else {
-                    returnTeam="Not found";
-                }
-            }
+
         }
         return returnTeam;
     }

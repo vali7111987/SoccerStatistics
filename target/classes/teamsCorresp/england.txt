@@ -1,0 +1,11 @@
+Betfair,SoccerStat
+Wigan, Wigan Athletic
+Swansea, Swansea City
+Bristol City , Bristol City (ENNGLAND 2)
+West Brom , West Brom (ENNGLAND 2)
+Birmingham, Birmingham City
+Cardiff, Cardiff City
+Man Utd, Manchester United
+Man City, Manchester City
+AC Monza, Monza
+
