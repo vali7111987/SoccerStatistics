@@ -2,28 +2,35 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.asserts.Assertion;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class TeamStat {
     @FindBy(xpath="//*[@id='autocomplete2']") WebElement searchTeam;
     @FindBy(xpath="//*[contains(text(),'Both teams scored')]//../td[2]") WebElement bttsHome;
     @FindBy(xpath="//*[contains(text(),'Both teams scored')]//../td[3]") WebElement bttsAway;
-    @FindBy(xpath="//*[contains(text(),'Matches over 1.5 goals')]//../td[2]")  WebElement over15GoalsHome;
-    @FindBy(xpath="//*[contains(text(),'Matches over 1.5 goals')]//../td[3]")  WebElement over15GoalsAway;
-    @FindBy(xpath="//*[contains(text(),'Matches over 2.5 goals')]//../td[2]")  WebElement over25GoalsHome;
-    @FindBy(xpath="//*[contains(text(),'Matches over 2.5 goals')]//../td[3]")  WebElement over25GoalsAway;
-    @FindBy(xpath="//*[contains(text(),'Matches over 3.5 goals')]//../td[2]")  WebElement over35GoalsHome;
-    @FindBy(xpath="//*[contains(text(),'Matches over 3.5 goals')]//../td[3]")  WebElement over35GoalsAway;
-    @FindBy(xpath="/html/body/div[5]/div[2]/div[1]/div[2]/div[2]/button[1]")  WebElement consent;
+    @FindBy(xpath="//*[contains(text(),'GF+GA over 1.5')]//../td[2]")  WebElement over15GoalsHome;
+    @FindBy(xpath="//*[contains(text(),'GF+GA over 1.5')]//../td[3]")  WebElement over15GoalsAway;
+    @FindBy(xpath="//table[2]//*[contains(text(),'GF+GA over 2.5')]//../td[2]") WebElement over25GoalsHome;
+    @FindBy(xpath="//table[2]//*[contains(text(),'GF+GA over 2.5')]//../td[3]")  WebElement over25GoalsAway;
+    @FindBy(xpath="//*[contains(text(),'GF+GA over 3.5')]//../td[2]")  WebElement over35GoalsHome;
+    @FindBy(xpath="//*[contains(text(),'GF+GA over 3.5')]//../td[3]")  WebElement over35GoalsAway;
+    @FindBy(xpath="//*[text()='AGREE']")  WebElement consent;
     @FindBy(xpath="//*[@id='content']//table[1]//td[2]/h2") WebElement teamName;
     String teamNamelocator="//*[@id='content']//table[1]//td[2]/h2";
     //@FindBy(xpath="//*[@id='content']/div[5]/div/div[2]/table[8]/tbody/tr[2]/td[2]/font") WebElement cornersHome;
     //@FindBy(xpath="//*[@id='content']/div[5]/div/div[2]/table[8]/tbody/tr[3]/td[2]/font") WebElement cornersAway;
     WebDriver driver;
-    String cUrl;
+    String cUrl="";
 
     //Constructor, as every page needs a Webdriver to find elements
     public TeamStat(WebDriver driver){
@@ -38,19 +45,25 @@ public class TeamStat {
 
 
     public Double getNumbers (String text) {
-        return Double.valueOf(text.substring(0,text.length()-1));
+        System.out.println("Value:" + text.replaceAll("%",""));
+        return Double.valueOf(text.replaceAll("%",""));
     }
 
-    public void clickOnConsent() {
+    public void clickConsent(WebDriver driver) {
         consent.click();
     }
 
+    public void clickOnConsent(WebDriver driver) {
+        Actions action = new Actions(driver);
+        action.moveToElement(consent).click().build().perform();
+    }
     public void navigateTo(String url2) {
         driver.get(url2);
         driver.manage().window().maximize();
     }
 
     public Double getBTTSHome() {
+        System.out.println("Stat value is" + bttsHome.getText());
         return getNumbers(bttsHome.getText());
     }
     public Double getBTTSAway() {
@@ -59,8 +72,7 @@ public class TeamStat {
     public Double getOver15Away() {
         return getNumbers(over15GoalsAway.getText());
     }
-    public Double getoVER15Home() {
-        return getNumbers(over15GoalsHome.getText());
+    public Double getoVER15Home() {return getNumbers(over15GoalsHome.getText());
     }
     public Double getOver25Away() {
         return getNumbers(over25GoalsAway.getText());
@@ -77,6 +89,21 @@ public class TeamStat {
     //public Double getCornesHome() {return getNumbers(cornersHome.getText());}
     //public Double getCornersAway() {return getNumbers(cornersAway.getText());}
 
+    public void writeToFile (String file,String text) {
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+        PrintWriter out = null;
+        try {
+            fw = new FileWriter(file, true);
+            bw = new BufferedWriter(fw);
+            out = new PrintWriter(bw);
+            out.println(text);
+            out.close();
+        } catch (IOException e) {
+            //exception handling left as an exercise for the reader
+        }
+    }
+
     public void selectTeam(String team) throws InterruptedException {
         //verify if link changes
         searchTeam.clear();
@@ -85,6 +112,9 @@ public class TeamStat {
         searchTeam.sendKeys(Keys.DOWN);
         searchTeam.sendKeys(Keys.ENTER);
         Thread.sleep(5000);
+        if (cUrl.equals(driver.getCurrentUrl())) {
+            writeToFile("missedTeams.txt",team);
+        }
         Assert.assertNotEquals(cUrl,driver.getCurrentUrl());
         Assert.assertTrue(verifyElementIsPresent(teamNamelocator));
         Assert.assertTrue(teamName.getText().contains(team));

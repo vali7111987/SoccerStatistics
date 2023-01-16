@@ -28,7 +28,6 @@ public class BetfairStatsMap {
 
     @Test
     public void writePairs() throws InterruptedException, IOException {
-
         String pair=null;
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\vali7\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
@@ -38,16 +37,21 @@ public class BetfairStatsMap {
         betfair=new Betfair(driver);
         teamStat=new TeamStat(driver);
         betfair.navigateTo("https://www.betfair.ro/sport/");
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         betfair.acceptaCookie.click();
         Thread.sleep(5000);
-        betfair.fotbalAstazi.click();
+        betfair.selectEnglish();
         Thread.sleep(5000);
         betfair.fotbalAstazi.click();
+        Thread.sleep(5000);
+        teamStat.navigateTo("https://www.soccerstats.com/");
+        Thread.sleep(5000);
+        teamStat.consent.click();
+        Thread.sleep(3000);
         for (String team : betfair.getTeamsHome()) {
             teamStat.navigateTo("https://www.soccerstats.com/");
             Thread.sleep(15000);
-            teamStat.clickOnConsent();
+            teamStat.clickOnConsent(driver);
             Thread.sleep(3000);
             pair = teamStat.findTeam(team);
             writeToFile("\n");

@@ -12,11 +12,15 @@ import java.io.PrintWriter;
 import java.util.*;
 
 public class Betfair {
-    @FindBy(xpath ="//li[@class='ui-clickselect']//*[contains(text(),'Fotbal')]") WebElement fotbal;
-    @FindBy(xpath="//*[contains(text(),'Elita')]") WebElement elita;
-    @FindBy(xpath="//*[contains(text(),'Fotbal de ast')]") WebElement fotbalAstazi;
+    @FindBy(xpath="//span[@class='section-header-title']") WebElement league;
+    @FindBy(xpath = "//*[@class='ssc-hls']") WebElement limba;
+    @FindBy(xpath = "//*[@class='ssc-en_GB']") WebElement engleza;
+    @FindBy(xpath ="//li[@class='ui-clickselect']//*[contains(text(),'Football')]") WebElement fotbal;
+    @FindBy(xpath="//*[contains(text(),'Elite')]") WebElement elita;
+    @FindBy(xpath="//*[contains(text(),'Today's Football')]") WebElement fotbalAstazi;
     @FindBy(xpath="//*[@id='onetrust-accept-btn-handler']") WebElement acceptaCookie;
     @FindBy(xpath="//div[@class='chooser-container']//span[2]//a[@data-action='loadCompetition']") WebElement orderByCompetition;
+    String teamLeague="//span[contains(text(),'Team')]//../../../../../../../..//span[@class='section-header-title']";
     String pathTeamsHome="//div[@class='teams-container']/span[1]";
     String pathTeamsAway="//div[@class='teams-container']/span[2]";
     WebDriver driver;
@@ -28,6 +32,12 @@ public class Betfair {
         PageFactory.initElements(driver,this);
     }
 
+    public void selectEnglish() throws InterruptedException {
+        limba.click();
+        Thread.sleep(2000);
+        engleza.click();
+    }
+
     public void navigateTo(String url2) {
         driver.get(url2);
         driver.manage().window().maximize();
@@ -37,24 +47,36 @@ public class Betfair {
         String s = input;        return s;
     }
     public void getTeamPairsInFile() throws IOException {
-        String home,away,teams;
+        String home,away,teams,leagueName,leaguePart;
         PrintWriter out = new PrintWriter("teampairs.txt");
 
         List<WebElement> teamPairsHome = driver.findElements(By.xpath(pathTeamsHome));
         List<WebElement> teamPairsAway = driver.findElements(By.xpath(pathTeamsAway));
         for (int i=0;i<teamPairsHome.size();i++) {
+            leaguePart=eliminBadChars(teamPairsHome.get(i).getText());
             home="{\""+eliminBadChars(teamPairsHome.get(i).getText())+"\"";
             away="\""+eliminBadChars(teamPairsAway.get(i).getText())+"\"}";
+            leagueName=driver.findElement(By.xpath(teamLeague.replace("Team",leaguePart))).getText();
             teams=home+","+away+","+"\n";
             out.write(teams);
         }
         out.close();
     }
+
+    public List<String> getTeamsLeague() throws IOException {
+        List <String> leagues = new ArrayList<>();
+        List<WebElement> league=driver.findElements(By.xpath(teamLeague));
+        for (int i=0;i<league.size();i++) {
+            leagues.add(eliminBadChars(String.valueOf(league.get(i).getText())));
+        }
+        return leagues;
+    }
+
     public List<String> getTeamsHome() throws IOException {
-        List <String> teamHome = Collections.singletonList("");
+        List <String> teamHome = new ArrayList<>();
         List<WebElement> teams=driver.findElements(By.xpath(pathTeamsHome));
         for (int i=0;i<teams.size();i++) {
-            teamHome.add(eliminBadChars(String.valueOf(teams.get(i))));
+            teamHome.add(eliminBadChars(String.valueOf(teams.get(i).getText())));
         }
         return teamHome;
     }

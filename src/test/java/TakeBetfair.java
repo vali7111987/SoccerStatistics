@@ -31,19 +31,27 @@ public class TakeBetfair {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         betfair=new Betfair(driver);
         betfair.navigateTo("https://www.betfair.ro/sport/");
-        Thread.sleep(10000);
+        Thread.sleep(5000);
         betfair.acceptaCookie.click();
-        Thread.sleep(5000);
-        betfair.fotbalAstazi.click();
-        Thread.sleep(5000);
-        //betfair.orderByCompetition.click();
-        //Thread.sleep(5000);
+        Thread.sleep(3000);
+        betfair.selectEnglish();
+        Thread.sleep(2000);
+        betfair.fotbal.click();
+        Thread.sleep(2000);
+        betfair.orderByCompetition.click();
+        Thread.sleep(2000);
 
 
     }
 
     @Test
     public void getTeamsPairs() throws  IOException {
+        betfair.getTeamPairsInFile();
+    }
+
+    @Test
+    public void getTeamAndLeague() throws IOException, InterruptedException {
+        betfair.selectEnglish();
         betfair.getTeamPairsInFile();
     }
 

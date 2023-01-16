@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite">
+    <test name="Betfair">
+        <parameter name="statType" value="today"/>
+        <classes>
+            <class name="TakeBetfair"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
